@@ -1,7 +1,5 @@
 import requests
 import os
-import json
-
 
 def ensure_dir(file_path):
     directory = os.path.dirname(file_path)
@@ -9,22 +7,19 @@ def ensure_dir(file_path):
         os.makedirs(directory)
 
 
-def get_content(url, filepath, id):
+def fetch_spacex_last_launch(url):
     os.chdir(filepath)
-    filename = "Space-{}.jpeg".format(id)
     response = requests.get(url)
-    with open (filename, 'wb') as file:
-        file.write(response.content)
+    for id, images_link in enumerate(response.json()['links']['flickr_images'], 1):
+        url = images_link
+        filename = "Space-{}.jpeg".format(id)
+        response = requests.get(url)
+        with open (filename, 'wb') as file:
+            file.write(response.content)
 
-def get_latest_launch_images(url):
-    response = requests.get(url)
-    return response.json()
 
 if __name__ == "__main__":
-    folder_name = "images"
-    filepath = "{}/{}/".format(os.getcwd(),folder_name)
+    filepath = "{}/images/".format(os.getcwd())
     ensure_dir(filepath)
-    url_shattle = 'https://api.spacexdata.com/v3/launches/latest'
-    for id, images_url in enumerate(get_latest_launch_images(url_shattle)['links']['flickr_images'], 1):
-        url = images_url
-        get_content(url, filepath, id)
+    url_latest_launch = 'https://api.spacexdata.com/v3/launches/latest'
+    fetch_spacex_last_launch(url_latest_launch)

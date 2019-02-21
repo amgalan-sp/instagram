@@ -35,8 +35,14 @@ def fetch_hubble_images(id, extension):
         print('No images with {} extension, or with {} id, please try with another one'.format(extension, id))
         pass
 
+def get_collection(collection, extension):
+    response = requests.get('http://hubblesite.org/api/v3/images/{}'.format(collection))
+    for image_id in response.json():
+        fetch_hubble_images(image_id['id'], extension)
+        print(image_id['id'])
 
 if __name__ == "__main__":
     ensure_dir('image')
-    fetch_spacex_last_launch()
+ #   fetch_spacex_last_launch()
   #  fetch_hubble_images(1, 'jpg')
+    get_collection('printshop', 'jpg')

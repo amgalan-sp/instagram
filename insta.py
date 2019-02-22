@@ -1,5 +1,7 @@
 import requests
 import os
+from instabot import Bot
+
 
 def ensure_dir(foldername):
     filepath = "{}/{}/".format(os.getcwd(), foldername)
@@ -41,8 +43,17 @@ def get_collection(collection, extension):
         fetch_hubble_images(image_id['id'], extension)
         print(image_id['id'])
 
+
+def upload_photos():
+    bot = Bot()
+    bot.login(username='', password='')
+    bot.upload_photo('111.jpg', caption='Nice Pic')
+
+
+
 if __name__ == "__main__":
     ensure_dir('image')
  #   fetch_spacex_last_launch()
   #  fetch_hubble_images(1, 'jpg')
-    get_collection('printshop', 'jpg')
+   # get_collection('printshop', 'jpg')
+    upload_photos()

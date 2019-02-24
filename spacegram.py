@@ -31,4 +31,4 @@ if __name__ == "__main__":
     extension = str(input("введите расширение файлов для скачивания и загрузки "))
     collection_name = str(input('введите название коллекции фотографий Хаббл '))
     get_collection(collection_name, extension)
-    upload_photos(extension='jpeg')
+    upload_photos()

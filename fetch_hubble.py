@@ -16,8 +16,8 @@ def fetch_hubble(id, extension):
         pass
 
 
-def get_collection(collection, extension):
-    response = requests.get('http://hubblesite.org/api/v3/images/{}'.format(collection))
+def get_collection(collection_name, extension):
+    response = requests.get('http://hubblesite.org/api/v3/images/{}'.format(collection_name))
     for image_id in response.json():
         fetch_hubble(image_id['id'], extension)
         print('successful loading ', image_id['id'])

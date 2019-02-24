@@ -1,4 +1,3 @@
-import requests
 import os
 from instabot import Bot
 from dotenv import load_dotenv
@@ -29,6 +28,7 @@ if __name__ == "__main__":
     load_dotenv()
     ensure_dir('image')
     fetch_spacex()
-    extension = str(input("введите расширение файлов для скачивания и загрузки ", ))
-    get_collection('stsci_gallery', extension)
+    extension = str(input("введите расширение файлов для скачивания и загрузки "))
+    collection_name = str(input('введите название коллекции фотографий Хаббл '))
+    get_collection(collection_name, extension)
     upload_photos(extension='jpeg')

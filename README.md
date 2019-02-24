@@ -19,7 +19,7 @@ Python3 должен быть уже установлен.
 ```
 pip install -r requirements.txt
 ```
-Далее, вам необходимо при выполеннии скрипта spacegram.py ввести формат файла (расширение изображения), в котором вы хотели бы скачать из серверов Spacex или hubble, и загрузить в Instagram, а также в случае использования hubble - ввести название коллекции фотографий hubble - news, holiday_cards, wallpaper, spacecraft, printshop, или stsci_gallery и т.д.
+Далее, вам необходимо при выполнении скрипта spacegram.py ввести формат файла (расширение изображения), в котором вы хотели бы скачать из серверов Spacex или hubble, и загрузить в Instagram, а также в случае использования hubble - ввести название коллекции фотографий hubble - news, holiday_cards, wallpaper, spacecraft, printshop, или stsci_gallery и т.д.
 ### Цель проекта
 
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org/).

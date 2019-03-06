@@ -4,15 +4,13 @@ import requests
 def fetch_hubble(id, extension):
     status_ready = None
     response = requests.get('http://hubblesite.org/api/v3/image/{}'.format(id))
-    for image_url in response.json()['image_files']:
+    image_data = response.json()['image_files']
+    for image_url in image_data:
         if image_url['file_url'].split('.')[-1] == extension:
-            status_ready = True
+            download(image_url['file_url'], "Hubble-{}.{}".format(id, extension))
         else:
             pass
-    if status_ready:
-        download(image_url['file_url'], "Hubble-{}.{}".format(id, extension))
-    else:
-        pass
+
 
 
 def get_collection(collection_name, extension):

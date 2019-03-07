@@ -40,4 +40,4 @@ if __name__ == "__main__":
         get_collection(collection_name, extension)
     else:
         print('choose a definition: download spacex or huuble shoots')
-    upload_photos()
+    upload_photos(extension)

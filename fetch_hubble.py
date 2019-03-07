@@ -1,22 +1,19 @@
 import requests
 
 
-def fetch_hubble(id, extension):
+def fetch_hubble(id, ext):
     status_ready = None
     response = requests.get('http://hubblesite.org/api/v3/image/{}'.format(id))
-    image_data = response.json()['image_files']
-    for image_url in image_data:
-        if image_url['file_url'].split('.')[-1] == extension:
-            download(image_url['file_url'], "Hubble-{}.{}".format(id, extension))
-        else:
-            pass
+    data = response.json()['image_files']
+    url = 'file_url'
+    image_name = "Hubble-{}.{}".format(id, ext)
+    get_load = [download(image['file_url'], image_name) for image in data if image['file_url'].split('.')[-1] == ext]
 
 
-
-def get_collection(collection_name, extension):
+def get_collection(collection_name, ext):
     response = requests.get('http://hubblesite.org/api/v3/images/{}'.format(collection_name))
     for image_id in response.json():
-        fetch_hubble(image_id['id'], extension)
+        fetch_hubble(image_id['id'], ext)
 
 
 def download(url, filename):

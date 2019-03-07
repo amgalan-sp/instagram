@@ -27,9 +27,9 @@ if __name__ == "__main__":
     load_dotenv()
     make_dir()
     parser = argparse.ArgumentParser(description='This is a description')
-    parser.add_argument('-e','--extension', type=str, help='you can give extension(format) of a photo like jpeg, png, jpg, tiff' )
+    parser.add_argument('-e','--extension', type=str, help='you can give extension(format) of a photo like jpg, png, jpg, tiff' )
     parser.add_argument('definite', help='you have 2 defs: spacex or hubble')
-    parser.add_argument('-c', '--collection', help='if you use hubble, yo need to input name of collection')
+    parser.add_argument('-c', '--collection', help='if you use hubble, you need to input name of collection')
     args = parser.parse_args()
     collection_name = args.collection
     extension = args.extension
